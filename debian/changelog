@@ -1,0 +1,34 @@
+ros-humble-create3-lidar-slam (0.0.5-1jammy) jammy; urgency=high
+
+
+
+ -- Alberto Soragna <asoragna@irobot.com>  Thu, 27 Jun 2024 07:00:00 -0000
+
+ros-humble-create3-lidar-slam (0.0.4-1jammy) jammy; urgency=high
+
+
+
+ -- Alberto Soragna <asoragna@irobot.com>  Thu, 27 Jun 2024 07:00:00 -0000
+
+ros-humble-create3-lidar-slam (0.0.3-1jammy) jammy; urgency=high
+
+
+
+ -- Alberto Soragna <asoragna@irobot.com>  Thu, 27 Jun 2024 07:00:00 -0000
+
+ros-humble-create3-lidar-slam (0.0.2-1jammy) jammy; urgency=high
+
+  * Merge pull request #51 <https://github.com/iRobotEducation/create3_examples/issues/51> from iRobotEducation/shamlian/fix-50
+    Remove name for rplidar_node in LIDAR SLAM example.
+  * Remove name for rplidar_node
+    The node is named by the configuration; it should not be renamed here.
+  * Merge pull request #48 <https://github.com/iRobotEducation/create3_examples/issues/48> from brianabouchard/humble-mapping-namespace
+    Add namespace functionality to Humble mapping example
+  * Remove rviz2 install instructions
+    - confirmed rviz2 installs when ros-humble-desktop is installed and create docs site provides desktop installation command for humble.
+  * Changed package name to create3_lidar_slam
+  * Contributors: Briana Bouchard, Steven Shamlian
+
+ -- Alberto Soragna <asoragna@irobot.com>  Wed, 05 Jun 2024 07:00:00 -0000
+
+
