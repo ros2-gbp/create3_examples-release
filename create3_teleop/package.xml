@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>create3_teleop</name>
-  <version>0.0.3</version>
+  <version>0.0.4</version>
   <description>Example launch files for teleoperating the iRobot(R) Create(R) 3 Educational Robot.</description>
   <maintainer email="asoragna@irobot.com">Alberto Soragna</maintainer>
   <license>BSD</license>
