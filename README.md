@@ -1,39 +1,117 @@
-# create3_examples
+# iRobot® Create® 3 LIDAR SLAM demo
 
-Example nodes to drive the iRobot® Create® 3 Educational Robot.
+This example sets up LIDAR SLAM with a Create® 3 robot and Slamtec RPLIDAR spinning laser rangefinder.
 
-### Dependencies
+## Parts List
 
-Make sure that ROS 2 Humble is already installed in your system.
-You can follow the [official instructions](https://docs.ros.org/en/humble/Installation.html).
+* Raspberry Pi® 4[^1]
+* USB-C® to USB-C® cable[^2]
+* Slamtec RPLidar A1M8
+* USB Micro B to USB A cable
+* 4x M2.5 x 8 flat head machine screw
+* 4x M2.5 x 6 self-tapping screw
+* 10x M3 x 10 self-tapping screw
 
-### Build instructions
+## Setup
 
-First, source your ROS 2 workspaces with all the required dependencies.
-Then, you are ready to clone and build this repository.
-You should only have to do this once per install.
+### Hardware Setup
 
-```sh
-mkdir -p create3_examples_ws/src
-cd create3_examples_ws/src
-git clone https://github.com/iRobotEducation/create3_examples.git --branch humble
-cd ..
-rosdep install --from-path src --ignore-src -yi
-colcon build
+The files in this example assume the RPLIDAR is mounted 12 mm behind the center of rotation on the top of the Create 3 robot, in the arrangement shown below.
+The SLAM solver relies on a proper `tf` tree; if you wish to mount the sensor in another location, you will need to modify the parameters in the static transform publisher launched from `launch/sensors_launch.py`.
+
+Note that all STLs of brackets referenced in this example are found in our [create3_docs](https://github.com/iRobotEducation/create3_docs/tree/main/docs/hw/data/brackets) repository.
+
+![Image of Create 3 showing setup and placement of sensors](https://iroboteducation.github.io/create3_docs/examples/data/create3_lidar_top.jpg)
+
+1. Affix a LIDAR to your robot.
+   STLs are available to mount an RPLidar A1M8 as well as its USB adapter.
+   The LIDAR can be attached to the mounting plate using qty. 4 of M2.5 x 8 screws.
+   The USB adapter can be attached to its mounting plate by heat staking (we used a soldering iron with an old tip in a well-ventilated space).
+   Both mounting plates can be attached to the Create® 3 faceplate with M3 x 10 self-tapping screws.
+
+1. Affix a single board computer (abbreviated as SBC for this guide) to your robot.
+   In this example, we use a Raspberry Pi® 4, but other devices should work.
+   STLs are available to mount a Raspberry Pi® to the Create® 3 robot.
+   The Raspberry Pi® can be attached to the mounting plate using qty. 4 of M2.5 x 6 self-tapping screws.
+   The mounting plate can be attached to the Create® 3 cargo bay with M3 x 10 self-tapping screws.
+
+1. Connect the LIDAR to the SBC with a USB Micro B to USB A cable.
+   Thread the cable through the passthrough in the top of the robot.
+
+1. Connect the SBC to the Create® 3 adapter board with a USB-C® to USB-C® cable.
+
+### SBC Setup
+
+On the SBC, clone and build the [create3_examples repository](https://github.com/iRobotEducation/create3_examples). 
+
+Source the setup shell scripts in **EVERY** terminal you open:
+
+```bash
+source ~/create3_examples_ws/install/local_setup.sh 
 ```
 
-### Initialization instructions
+Run the sensors launch script, which includes the LIDAR driver and transform from the laser scan to the robot:
 
-You will have to do this in every new session in which you wish to use these examples:
+```bash
+ros2 launch create3_lidar_slam sensors_launch.py
+```
+If your robot is using a namespace, you should add `namespace:='ROBOTNAMESPACE'` to the previous command, where `ROBOTNAMESPACE` is the namespace of your robot
 
-```sh
+In a separate terminal run slam toolbox:
+
+```bash
+ros2 launch create3_lidar_slam slam_toolbox_launch.py
+```
+If your robot is using a namespace, you should add `namespace:='ROBOTNAMESPACE'` to the previous command, where `ROBOTNAMESPACE` is the namespace of your robot.
+
+There may be some warnings and errors on startup, but the following message will be printed once everything is ready:
+
+```bash
+[async_slam_toolbox_node-1] Registering sensor: [Custom Described Lidar]
+```
+
+In a third terminal, drive the robot around:
+
+```bash
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+```
+If your robot is using a namespace, you should add `--ros-args -r __ns:=/ROBOTNAMESPACE` to the previous command, where `ROBOTNAMESPACE` is the namespace of your robot.
+
+### Computer Setup
+
+Clone and build the [create3_examples repository](https://github.com/iRobotEducation/create3_examples). 
+Then source the setup shell scripts.
+
+```
 source ~/create3_examples_ws/install/local_setup.sh
 ```
 
-### Run the examples
 
-Refer to the individual examples README.md for instructions on how to run them.
+Run the rviz launch script, which launches rviz2 with the appropriate configuration:
 
-### Potential pitfalls
+```bash
+ros2 launch create3_lidar_slam rviz_launch.py
+```
+If your robot is using a namespace, you should add `namespace:='ROBOTNAMESPACE'` to the previous command, where `ROBOTNAMESPACE` is the namespace of your robot.
 
-If you are unable to automatically install dependencies with rosdep (perhaps due to [this issue](https://github.com/ros-infrastructure/rosdep/issues/733)), please do be sure to manually install the dependencies for your particular example of interest, contained in its package.xml file.
+The rviz2 configuration this command imports will configure rviz2 to subscribe to the laser, the occupancy map, and display the `base_footprint` tf frame that the laser is building off of from the map frame.
+
+![Image of rviz with custom configuration](https://iroboteducation.github.io/create3_docs/examples/data/create3_lidar_rviz.png)
+
+
+
+
+## Tips and Tricks
+
+* Limit rotation speed for best results.
+
+
+### Troubleshooting
+
+* Ensure the robot, SBC, and computer are all on the same network, using the same middleware.
+* If using CycloneDDS, and you are using multiple network interfaces on either the SBC or the computer, be sure to set up your [XML profile(s)](https://iroboteducation.github.io/create3_docs/setup/xml-config/) properly.
+* Check your tf tree and make sure it has all the same transforms as [this sample tree](TF_Tree.pdf).
+
+[^1]: Raspberry Pi® is a trademark of Raspberry Pi Trading.
+[^2]: USB-C® is a trademark of USB Implementers Forum.
+[^3]: All other trademarks mentioned are the property of their respective owners.
