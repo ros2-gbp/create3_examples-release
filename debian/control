@@ -1,0 +1,12 @@
+Source: ros-humble-create3-lidar-slam
+Section: misc
+Priority: optional
+Maintainer: Alberto Soragna <asoragna@irobot.com>
+Build-Depends: debhelper (>= 9.0.0), ros-humble-ament-cmake, ros-humble-irobot-create-msgs, ros-humble-launch-ros, ros-humble-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-humble-create3-lidar-slam
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-humble-irobot-create-msgs, ros-humble-launch-ros, ros-humble-rplidar-ros, ros-humble-slam-toolbox, ros-humble-ros-workspace
+Description: Example for using an RPLIDAR A1 with a Create 3
