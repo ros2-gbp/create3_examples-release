@@ -1,16 +1,39 @@
-# iRobot® Create® 3 Examples Python
+# create3_examples
 
-This package contains Python script that demonstrate how to interact with the Create® 3 robot.
+Example nodes to drive the iRobot® Create® 3 Educational Robot.
 
-## iRobot® Create® 3 Dance
+### Dependencies
 
-**NOTES:** 
- - You must undock the robot before starting this example
+Make sure that ROS 2 Humble is already installed in your system.
+You can follow the [official instructions](https://docs.ros.org/en/humble/Installation.html).
 
-This executable will show how to drive the robot around while changing its LED colors.
-Use it to create patterns and follow the tempo of your favourite songs!
-To run it:
+### Build instructions
+
+First, source your ROS 2 workspaces with all the required dependencies.
+Then, you are ready to clone and build this repository.
+You should only have to do this once per install.
 
 ```sh
-ros2 run create3_examples_py create3_dance
+mkdir -p create3_examples_ws/src
+cd create3_examples_ws/src
+git clone https://github.com/iRobotEducation/create3_examples.git --branch humble
+cd ..
+rosdep install --from-path src --ignore-src -yi
+colcon build
 ```
+
+### Initialization instructions
+
+You will have to do this in every new session in which you wish to use these examples:
+
+```sh
+source ~/create3_examples_ws/install/local_setup.sh
+```
+
+### Run the examples
+
+Refer to the individual examples README.md for instructions on how to run them.
+
+### Potential pitfalls
+
+If you are unable to automatically install dependencies with rosdep (perhaps due to [this issue](https://github.com/ros-infrastructure/rosdep/issues/733)), please do be sure to manually install the dependencies for your particular example of interest, contained in its package.xml file.
