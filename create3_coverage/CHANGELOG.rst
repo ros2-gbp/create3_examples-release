@@ -2,6 +2,9 @@
 Changelog for package create3_coverage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.0 (2024-09-28)
+------------------
+
 0.0.5 (2024-06-27)
 ------------------
 * update create3_coverage package.xml

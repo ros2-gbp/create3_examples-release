@@ -31,6 +31,7 @@
         "cmd_audio", "irobot_create_msgs/msg/AudioNoteVector",
         "cmd_lightring", "irobot_create_msgs/msg/LightringLeds",
         "cmd_vel", "geometry_msgs/msg/Twist",
+        "cmd_vel_stamped", "geometry_msgs/msg/TwistStamped",
       ]
       robot_services: [
         "e_stop", "irobot_create_msgs/srv/EStop",

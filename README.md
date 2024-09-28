@@ -5,7 +5,7 @@ Example nodes to drive the iRobot® Create® 3 Educational Robot.
 ### Dependencies
 
 Make sure that ROS 2 Humble is already installed in your system.
-You can follow the [official instructions](https://docs.ros.org/en/humble/Installation.html).
+You can follow the [official instructions](https://docs.ros.org/en/jazzy/Installation.html).
 
 ### Build instructions
 
@@ -16,7 +16,7 @@ You should only have to do this once per install.
 ```sh
 mkdir -p create3_examples_ws/src
 cd create3_examples_ws/src
-git clone https://github.com/iRobotEducation/create3_examples.git --branch humble
+git clone https://github.com/iRobotEducation/create3_examples.git --branch jazzy
 cd ..
 rosdep install --from-path src --ignore-src -yi
 colcon build
