@@ -1,0 +1,51 @@
+ros-jazzy-create3-republisher (1.0.0-1noble) noble; urgency=high
+
+  * Merge pull request #58 <https://github.com/iRobotEducation/create3_examples/issues/58> from civerachb-cpr/patch-1
+    Adds the new /cmd_vel_stamped topic to the robot subscriptions.
+  * Merge pull request #56 <https://github.com/iRobotEducation/create3_examples/issues/56> from hilary-luo/hluo/rel-namespace-fix
+    Relative Namespace Fix
+  * Remove manual handling of namespace not being fully qualified
+  * Contributors: Alberto Soragna, Chris Iverach-Brereton, Hilary Luo
+
+ -- Alberto Soragna <asoragna@irobot.com>  Sat, 28 Sep 2024 07:00:00 -0000
+
+ros-jazzy-create3-republisher (0.0.5-1noble) noble; urgency=high
+
+
+
+ -- Alberto Soragna <asoragna@irobot.com>  Thu, 27 Jun 2024 07:00:00 -0000
+
+ros-jazzy-create3-republisher (0.0.4-1noble) noble; urgency=high
+
+
+
+ -- Alberto Soragna <asoragna@irobot.com>  Thu, 27 Jun 2024 07:00:00 -0000
+
+ros-jazzy-create3-republisher (0.0.3-1noble) noble; urgency=high
+
+  * add debug statistics
+  * Contributors: Alberto Soragna
+
+ -- Alberto Soragna <asoragna@irobot.com>  Thu, 27 Jun 2024 07:00:00 -0000
+
+ros-jazzy-create3-republisher (0.0.2-1noble) noble; urgency=high
+
+  * update republisher
+  * Merge pull request #54 <https://github.com/iRobotEducation/create3_examples/issues/54> from hilary-luo/hluo/turtlebot4-republisher
+    Turtlebot4 Republisher
+  * Enable topics that Turtlebot4 needs by default
+  * Accept a relative robot namespace
+  * Merge pull request #53 <https://github.com/iRobotEducation/create3_examples/issues/53> from iRobotEducation/asoragna/create3-republisher
+    add create 3 republisher package
+  * add missing reset-pose service and cleanup
+  * fix bug with undock action and update docs
+  * update docks
+  * add logs and improve documentation
+  * remove hardcoded periods and timeouts
+  * allow use of / namespace for republisher
+  * add create 3 republisher package
+  * Contributors: Alberto Soragna, Hilary Luo
+
+ -- Alberto Soragna <asoragna@irobot.com>  Wed, 05 Jun 2024 07:00:00 -0000
+
+
