@@ -1,39 +1,37 @@
-# create3_examples
+# iRobot® Create® 3 Coverage
 
-Example nodes to drive the iRobot® Create® 3 Educational Robot.
+This example creates a ROS 2 action server that runs a simple non-systematic coverage algorithm on your Create® 3.
 
-### Dependencies
+The purpose of this example is to show how to command your robot and react to its hazard information.
 
-Make sure that ROS 2 Humble is already installed in your system.
-You can follow the [official instructions](https://docs.ros.org/en/jazzy/Installation.html).
+### How to use
 
-### Build instructions
+Build this and the `create3_examples_msgs` packages.
+Source the setup shell scripts.
 
-First, source your ROS 2 workspaces with all the required dependencies.
-Then, you are ready to clone and build this repository.
-You should only have to do this once per install.
+Start the coverage action server
 
-```sh
-mkdir -p create3_examples_ws/src
-cd create3_examples_ws/src
-git clone https://github.com/iRobotEducation/create3_examples.git --branch jazzy
-cd ..
-rosdep install --from-path src --ignore-src -yi
-colcon build
+```bash
+ros2 run create3_coverage create3_coverage
 ```
 
-### Initialization instructions
+In a separate terminal command a coverage action
 
-You will have to do this in every new session in which you wish to use these examples:
-
-```sh
-source ~/create3_examples_ws/install/local_setup.sh
+```bash
+ros2 action send_goal /coverage create3_examples_msgs/action/Coverage "{explore_duration:{sec: 500, nanosec: 0}, max_runtime:{sec: 1000,nanosec: 0}}"
 ```
 
-### Run the examples
+### Robot initial configuration
 
-Refer to the individual examples README.md for instructions on how to run them.
+**NOTES:**
+ - Do not start the behavior with the robot undocked, but very close to the dock. The behavior may fail or it may cause the robot to run over its dock.
+ It's safe to start with the robot still docked.
+ - Do not start the behavior with the robot in contact with obstacles or cliffs.
 
-### Potential pitfalls
 
-If you are unable to automatically install dependencies with rosdep (perhaps due to [this issue](https://github.com/ros-infrastructure/rosdep/issues/733)), please do be sure to manually install the dependencies for your particular example of interest, contained in its package.xml file.
+### Troubleshooting
+
+##### `Waiting for an action server to become available...`
+
+If users notice that they are unable to communicate with the coverage action server when using Fast-DDS RMW, this is due to the following bug https://github.com/ros2/rmw_fastrtps/issues/563.
+A simple fix consists in updating the `rwm_fastrtps_cpp` library to a version >= 5.0.1
