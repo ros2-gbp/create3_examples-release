@@ -1,0 +1,12 @@
+Source: ros-jazzy-create3-teleop
+Section: misc
+Priority: optional
+Maintainer: Alberto Soragna <asoragna@irobot.com>
+Build-Depends: debhelper (>= 9.0.0), python3-pytest <!nocheck>, ros-jazzy-ament-cmake-flake8 <!nocheck>, ros-jazzy-ros-workspace, python3-all, python3-setuptools, dh-python
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-create3-teleop
+Architecture: any
+Depends: ${python3:Depends}, ${misc:Depends}, ros-jazzy-joy, ros-jazzy-launch-ros, ros-jazzy-teleop-twist-joy, ros-jazzy-teleop-twist-keyboard, ros-jazzy-ros-workspace
+Description: Example launch files for teleoperating the iRobot(R) Create(R) 3 Educational Robot.

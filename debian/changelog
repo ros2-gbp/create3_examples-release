@@ -1,0 +1,35 @@
+ros-jazzy-create3-teleop (1.0.0-1bookworm) bookworm; urgency=high
+
+
+
+ -- Alberto Soragna <asoragna@irobot.com>  Sat, 28 Sep 2024 07:00:00 -0000
+
+ros-jazzy-create3-teleop (0.0.5-1bookworm) bookworm; urgency=high
+
+
+
+ -- Alberto Soragna <asoragna@irobot.com>  Thu, 27 Jun 2024 07:00:00 -0000
+
+ros-jazzy-create3-teleop (0.0.4-1bookworm) bookworm; urgency=high
+
+
+
+ -- Alberto Soragna <asoragna@irobot.com>  Thu, 27 Jun 2024 07:00:00 -0000
+
+ros-jazzy-create3-teleop (0.0.3-1bookworm) bookworm; urgency=high
+
+
+
+ -- Alberto Soragna <asoragna@irobot.com>  Thu, 27 Jun 2024 07:00:00 -0000
+
+ros-jazzy-create3-teleop (0.0.2-1bookworm) bookworm; urgency=high
+
+  * typo
+  * Merge pull request #18 <https://github.com/iRobotEducation/create3_examples/issues/18> from iRobotEducation/asoragna/teleop
+    add teleop launch scripts
+  * add teleop launch scripts
+  * Contributors: Alberto Soragna, Steven Shamlian
+
+ -- Alberto Soragna <asoragna@irobot.com>  Wed, 05 Jun 2024 07:00:00 -0000
+
+
