@@ -1,39 +1,33 @@
-# create3_examples
+# Create3 Teleoperation
 
-Example nodes to drive the iRobot® Create® 3 Educational Robot.
+This package contains scripts and instructions for teleoperating the the Create® 3 robot using keyboard or joystick.
 
-### Dependencies
-
-Make sure that ROS 2 Humble is already installed in your system.
-You can follow the [official instructions](https://docs.ros.org/en/jazzy/Installation.html).
-
-### Build instructions
-
-First, source your ROS 2 workspaces with all the required dependencies.
-Then, you are ready to clone and build this repository.
-You should only have to do this once per install.
+### Keyboard Teleoperation
 
 ```sh
-mkdir -p create3_examples_ws/src
-cd create3_examples_ws/src
-git clone https://github.com/iRobotEducation/create3_examples.git --branch jazzy
-cd ..
-rosdep install --from-path src --ignore-src -yi
-colcon build
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
 
-### Initialization instructions
-
-You will have to do this in every new session in which you wish to use these examples:
+### Joystick Teleoperation
 
 ```sh
-source ~/create3_examples_ws/install/local_setup.sh
+ros2 launch create3_teleop teleop_joystick_launch.py
 ```
 
-### Run the examples
+This will default to an xbox 360 controller, but can be easily overriden using the `joy_config` launchfile argument for any of the supported platforms. As of time of writing, these are:
+- Logitech Attack3 (`atk3`)
+- Logitech Extreme 3D Pro (`xd3`)
+- PS3 (`ps3` or `ps3-holonomic`)
+- Xbox 360 (`xbox`)
 
-Refer to the individual examples README.md for instructions on how to run them.
+Example for a PS3 controller:
 
-### Potential pitfalls
+```sh
+ros2 launch create3_teleop teleop_joystick_launch.py joy_config:=ps3
+```
 
-If you are unable to automatically install dependencies with rosdep (perhaps due to [this issue](https://github.com/ros-infrastructure/rosdep/issues/733)), please do be sure to manually install the dependencies for your particular example of interest, contained in its package.xml file.
+Also, it's possible to select the specific device to use with the `joy_dev` argument. It can be used as follows:
+
+```sh
+ros2 launch create3_teleop teleop_joystick_launch.py joy_dev:=/dev/input/js1
+```
